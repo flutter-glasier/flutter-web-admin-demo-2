@@ -1,14 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
+import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/helpers/reponsiveness.dart';
-import 'package:flutter_web_dashboard/pages/authentication/authentication.dart';
+import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:get/get.dart';
 
 import 'custom_text.dart';
 
+MenuController menuController = Get.put(MenuController());
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
     AppBar(
+      actions: [
+        PopupMenuButton(
+          // key: key,
+          icon: Icon(Icons.more_vert),
+          itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+            PopupMenuItem(
+              onTap: () {
+                Get.toNamed(editProfileRoute);
+                // Navigator.of(context)
+                //     .push(MaterialPageRoute(builder: (BuildContext context) {
+                //   return EditProfile();
+                // }));
+              },
+              child: ListTile(
+                leading: Icon(Icons.edit_outlined),
+                title: Text('Edit Profile'),
+              ),
+            ),
+            const PopupMenuItem(
+              child: ListTile(
+                leading: Icon(Icons.share),
+                title: Text('Share'),
+              ),
+            ),
+            const PopupMenuItem(
+              child: ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Logout'),
+              ),
+            ),
+            // const PopupMenuDivider(),
+            // const PopupMenuItem(child: Text('Item A')),
+            // const PopupMenuItem(child: Text('Item B')),
+          ],
+        )
+      ],
       leading: !ResponsiveWidget.isSmallScreen(context)
           ? Row(
               children: [
@@ -38,12 +76,14 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
                   weight: FontWeight.bold,
                 )),
             Expanded(child: Container()),
-            IconButton(
-                icon: Icon(
-                  Icons.settings,
-                  color: dark,
-                ),
-                onPressed: () {}),
+            // IconButton(
+            //     icon: Icon(
+            //       Icons.settings,
+            //       color: dark,
+            //     ),
+            //     onPressed: () {
+            //       // _showPopupMenu(context);
+            //     }),
             Stack(
               children: [
                 IconButton(
@@ -52,7 +92,8 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
                       color: dark.withOpacity(.7),
                     ),
                     onPressed: () {
-                      Get.defaultDialog(title: 'Hello Ashish');
+                      menuController.isMenuShowing.value =
+                          !menuController.isMenuShowing.value;
                     }),
                 Positioned(
                   top: 7,
@@ -85,8 +126,8 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               width: 16,
             ),
             InkWell(
-              onTap: () {
-                Get.toNamed(authenticationPageRoute);
+              onTap: () async {
+                await Get.toNamed(authenticationPageRoute);
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -115,3 +156,29 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       elevation: 0,
       backgroundColor: Colors.transparent,
     );
+
+void _showPopupMenu(BuildContext context) async {
+  await showMenu(
+    context: context,
+    position: RelativeRect.fromLTRB(0, 500, 200, 0),
+    items: [
+      PopupMenuItem(
+        value: 1,
+        child: Text("View"),
+      ),
+      PopupMenuItem(
+        value: 2,
+        child: Text("Edit"),
+      ),
+      PopupMenuItem(
+        value: 3,
+        child: Text("Delete"),
+      ),
+    ],
+    elevation: 8.0,
+  ).then((value) {
+// NOTE: even you didnt select item this method will be called with null of value so you should call your call back with checking if value is not null
+
+    if (value != null) print(value);
+  });
+}

@@ -17,7 +17,6 @@ class AvailableDriversTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Build called');
     return Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -54,11 +53,11 @@ class AvailableDriversTable extends StatelessWidget {
                   minWidth: 600,
                   columns: [
                     DataColumn2(
-                      label: Text("Name"),
+                      label: Text("Id"),
                       size: ColumnSize.L,
                     ),
                     DataColumn(
-                      label: Text('Location'),
+                      label: Text('Name'),
                     ),
                     DataColumn(
                       label: Text('Rating'),
@@ -82,17 +81,17 @@ class AvailableDriversTable extends StatelessWidget {
                                 DataCell(Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
+                                    CustomText(
+                                      text: '4.5',
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                     Icon(
                                       Icons.star,
                                       color: Colors.deepOrange,
                                       size: 18,
                                     ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    CustomText(
-                                      text: '45',
-                                    )
                                   ],
                                 )),
                                 DataCell(Container(

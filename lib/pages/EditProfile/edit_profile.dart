@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_dashboard/constants/controllers.dart';
-import 'package:flutter_web_dashboard/helpers/reponsiveness.dart';
-import 'package:flutter_web_dashboard/pages/drivers/widgets/drivers_table.dart';
-import 'package:flutter_web_dashboard/pages/drivers/widgets/search_bar.dart';
-import 'package:flutter_web_dashboard/widgets/custom_text.dart';
+import 'package:flutter_web_dashboard/pages/EditProfile/widgets/avatar_header.dart';
+import 'package:flutter_web_dashboard/widgets/top_nav.dart';
 import 'package:get/get.dart';
 
-class DriversPage extends StatelessWidget {
-  const DriversPage({Key? key}) : super(key: key);
+import '../../helpers/local_navigator.dart';
+import '../../helpers/reponsiveness.dart';
+import '../../widgets/custom_text.dart';
+import '../../widgets/large_screen.dart';
+import '../../widgets/side_menu.dart';
+
+class EditProfile extends StatelessWidget {
+  EditProfile({Key? key}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +35,11 @@ class DriversPage extends StatelessWidget {
           ),
           Expanded(
               child: ListView(
-            children: [SearchBar(), DriversTable()],
-          )),
+            children: [AvatarHeader()],
+          ))
         ],
       ),
     );
+    ;
   }
 }

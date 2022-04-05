@@ -23,16 +23,11 @@ class ServiceController extends GetxController {
 
   Future<DemoResponse> getCovidData() async {
     isLoading.value = true;
-    print(
-        'https://api.instantwebtools.net/v1/passenger?page=${page.toString()}=0&size=10');
+
     response = await dio.get(
         'https://api.instantwebtools.net/v1/passenger?page=${page.toString()}=0&size=10');
 
     demoResponse.value = DemoResponse.fromJson(response!.data);
-
-    print("API response " + response!.data.toString());
-
-    print("Page number " + page.value.toString());
 
     return DemoResponse.fromJson(response!.data);
   }

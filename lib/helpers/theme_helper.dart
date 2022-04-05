@@ -55,6 +55,40 @@ class CustomTheme extends BaseTheme {
 
 class BaseTheme {
   Color get colorPrimary => fromHex("#294572");
+  Color get whitePrimary => fromHex("#FFFFFF");
+  Color get grey => fromHex("#FFFFFF");
+
+  TextStyle get text12SemiBoldRed {
+    return TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.8,
+        color: Colors.red);
+  }
+
+  TextStyle get text14SemiBolddBlack {
+    return TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.8,
+    );
+  }
+
+  TextStyle get text14SemiGrey {
+    return TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.8,
+        color: Colors.grey);
+  }
+
+  TextStyle get text24BoldBlack {
+    return TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0.8,
+    );
+  }
 }
 
 BaseTheme? get appTheme => ThemeHelper.theme();
