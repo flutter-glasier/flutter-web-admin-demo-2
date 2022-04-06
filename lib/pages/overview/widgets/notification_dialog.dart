@@ -105,7 +105,7 @@ class NotificationDialog extends StatelessWidget {
                                     ),
                                   ),
                                   title: Text(
-                                    'New delivery assigned to you',
+                                    'New enquiry created !',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
@@ -150,7 +150,7 @@ class NotificationDialog extends StatelessWidget {
                                     ),
                                   ),
                                   title: Text(
-                                    'New delivery assigned to you',
+                                    'New enquiry created !',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),

@@ -30,6 +30,8 @@ class CommonTextfield extends StatefulWidget {
   final FocusNode? requestedFocusNode;
   Function? callback;
   final double? margin;
+  final double? textFieldHeight;
+  final double? textFieldWidth;
 
   CommonTextfield(
       {this.textOption,
@@ -54,7 +56,9 @@ class CommonTextfield extends StatefulWidget {
       this.isObsecure,
       this.requestedFocusNode,
       this.callback,
-      this.margin});
+      this.margin,
+      this.textFieldHeight,
+      this.textFieldWidth});
 
   @override
   _CommonTextfieldState createState() => _CommonTextfieldState();
@@ -70,126 +74,140 @@ class _CommonTextfieldState extends State<CommonTextfield> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TextFormField(
-        // scrollPadding: EdgeInsets.symmetric(vertical: getSize(15)),
-        textAlignVertical: TextAlignVertical(y: 0.5),
-
-        //textAlignVertical: TextAlignVertical.center,
-        textCapitalization:
-            widget.textOption!.keyboardType == TextInputType.text
-                ? TextCapitalization.sentences
-                : TextCapitalization.none,
-        readOnly: widget.readOnly ?? false,
-        autocorrect: widget.autoCorrect,
-        obscuringCharacter: widget.textOption!.obSecureText ?? '∗',
-        enabled: widget.enable,
-        maxLines: widget.textOption!.maxLine,
-        textInputAction: widget.inputAction ?? TextInputAction.done,
-        focusNode: widget.focusNode ?? null,
-        autofocus: widget.autoFocus ?? false,
-        controller: widget.textOption!.inputController,
-        obscureText: obscureText,
-
-        style: appTheme!.text14SemiBolddBlack,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-
-        // autovalidate: true,
-        keyboardType: widget.textOption!.keyboardType ?? TextInputType.text,
-        cursorColor: appTheme!.colorPrimary,
-        inputFormatters: widget.textOption!.formatter ?? [],
-
-        decoration: InputDecoration(
-          isDense: false,
-          errorStyle: appTheme!.text12SemiBoldRed,
-          contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-          errorMaxLines: 2,
-          // helperText: '',
-
-          border: InputBorder.none,
-          //  OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(35),
-          //     borderSide: BorderSide(
-          //         style: BorderStyle.solid,
-          //         color: appTheme.redColor.withOpacity(0.5),
-          //         width: getSize(0.5))),
-          disabledBorder: InputBorder.none,
-          //  OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(30),
-          //     borderSide: BorderSide(
-          //         style: BorderStyle.solid,
-          //         color: appTheme.colorTextFieldBorder.withOpacity(0.5),
-          //         width: getSize(0.5))),
-          enabledBorder: InputBorder.none,
-          // OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(25),
-          //     borderSide: BorderSide(
-          //         style: BorderStyle.solid,
-          //         color: appTheme.colorTextFieldBorder,
-          //         width: getSize(1))),
-
-          focusedBorder: InputBorder.none,
-          //  OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(25),
-          //     borderSide: BorderSide(
-          //         style: BorderStyle.solid,
-          //         color: appTheme.colorPrimary,
-          //         width: getSize(1))),
-          // fillColor: widget.textOption.fillColor ?? appTheme.splashBgColor,
-          filled: true,
-          labelText: widget.textOption!.labelText,
-          enabled: true,
-          hintStyle: widget.textOption!.hintStyleText ??
-              appTheme!.text14SemiBolddBlack,
-          hintText: widget.textOption!.hintText,
-          // contentPadding: EdgeInsets.only(
-          //     left: getSize(10), top: getSize(10), bottom: getSize(10)),
-          labelStyle: appTheme!.text14SemiBolddBlack,
-          prefixIcon: widget.textOption!.prefixWid,
-          suffixIcon: (widget.textOption!.isSecureTextField != null &&
-                  widget.textOption!.isSecureTextField)
-              ? InkWell(
-                  onTap: () {},
-                  child: Container(
-                    margin: EdgeInsets.all(15),
-                    height: 15,
-                    width: 20,
-                  ))
-              : widget.textOption!.type == TextFieldType.DropDown
-                  ? IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        color: appTheme!.grey,
-                      ),
-                      onPressed: () {},
-                    )
-                  : widget.textOption!.postfixWid,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.label!,
+          style: appTheme!.text14SemiBolddBlack,
         ),
+        Container(
+          height: widget.textFieldHeight ?? 35,
+          width: widget.textFieldWidth ?? 200,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: TextFormField(
+            // scrollPadding: EdgeInsets.symmetric(vertical: getSize(15)),
+            textAlignVertical: TextAlignVertical(y: 0.5),
 
-        //     /*onSubmitted: (String text) {
-        //       this.widget.textCallback(text);
-        //       FocusScope.of(context).unfocus();
-        //       if (widget.onNextPress != null) {
-        //         widget.onNextPress();
-        //       }
-        // },*/
-        onFieldSubmitted: (String text) {
-          FocusScope.of(context).nextFocus();
-          widget.focusNode!.unfocus();
-          if (widget.onNextPress != null) {
-            widget.onNextPress!();
-          }
-        },
+            //textAlignVertical: TextAlignVertical.center,
+            textCapitalization:
+                widget.textOption!.keyboardType == TextInputType.text
+                    ? TextCapitalization.sentences
+                    : TextCapitalization.none,
+            readOnly: widget.readOnly ?? false,
+            autocorrect: widget.autoCorrect,
+            obscuringCharacter: widget.textOption!.obSecureText ?? '∗',
+            enabled: widget.enable,
+            maxLines: widget.textOption!.maxLine,
+            textInputAction: widget.inputAction ?? TextInputAction.done,
+            focusNode: widget.focusNode ?? null,
+            autofocus: widget.autoFocus ?? false,
+            controller: widget.textOption!.inputController,
+            obscureText: obscureText,
 
-        // validator: widget.validation,
-        // onChanged: (String text) {
-        //   this.widget.textCallback(text);
-        // },
+            style: appTheme!.text14SemiBolddBlack,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
 
-        onEditingComplete: () {
-          this.widget.textCallback!(widget.textOption!.inputController!.text);
-        },
-      ),
+            // autovalidate: true,
+            keyboardType: widget.textOption!.keyboardType ?? TextInputType.text,
+            cursorColor: appTheme!.colorPrimary,
+            inputFormatters: widget.textOption!.formatter ?? [],
+
+            decoration: InputDecoration(
+              isDense: false,
+              errorStyle: appTheme!.text12SemiBoldRed,
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              errorMaxLines: 2,
+              // helperText: '',
+
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                      style: BorderStyle.solid,
+                      color: appTheme!.grey.withOpacity(0.1),
+                      width: 0.5)),
+              disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                      style: BorderStyle.solid,
+                      color: appTheme!.grey.withOpacity(0.1),
+                      width: 0.5)),
+              // enabledBorder: InputBorder.none,
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                      style: BorderStyle.solid,
+                      color: appTheme!.grey.withOpacity(0.4),
+                      width: 0.5)),
+
+              focusedBorder:
+                  // InputBorder.none,
+                  OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                          style: BorderStyle.solid,
+                          color: appTheme!.colorPrimary,
+                          width: 1)),
+              fillColor: widget.textOption!.fillColor ?? appTheme!.whiteColor,
+              filled: true,
+              labelText: widget.textOption!.labelText,
+              enabled: true,
+              hintStyle: widget.textOption!.hintStyleText ??
+                  appTheme!.text14SemiBolddBlack,
+              hintText: widget.textOption!.hintText,
+              // contentPadding: EdgeInsets.only(
+              //     left: getSize(10), top: getSize(10), bottom: getSize(10)),
+              labelStyle: appTheme!.text14SemiBolddBlack,
+              prefixIcon: widget.textOption!.prefixWid,
+              suffixIcon: (widget.textOption!.isSecureTextField != null &&
+                      widget.textOption!.isSecureTextField)
+                  ? InkWell(
+                      onTap: () {},
+                      child: Container(
+                        margin: EdgeInsets.all(15),
+                        height: 15,
+                        width: 20,
+                      ))
+                  : widget.textOption!.type == TextFieldType.DropDown
+                      ? IconButton(
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: appTheme!.grey,
+                          ),
+                          onPressed: () {},
+                        )
+                      : widget.textOption!.postfixWid,
+            ),
+
+            //     /*onSubmitted: (String text) {
+            //       this.widget.textCallback(text);
+            //       FocusScope.of(context).unfocus();
+            //       if (widget.onNextPress != null) {
+            //         widget.onNextPress();
+            //       }
+            // },*/
+            onFieldSubmitted: (String text) {
+              FocusScope.of(context).nextFocus();
+              widget.focusNode!.unfocus();
+              if (widget.onNextPress != null) {
+                widget.onNextPress!();
+              }
+            },
+
+            // validator: widget.validation,
+            // onChanged: (String text) {
+            //   this.widget.textCallback(text);
+            // },
+
+            onEditingComplete: () {
+              this
+                  .widget
+                  .textCallback!(widget.textOption!.inputController!.text);
+            },
+          ),
+        ),
+      ],
     );
   }
 }

@@ -55,8 +55,16 @@ class CustomTheme extends BaseTheme {
 
 class BaseTheme {
   Color get colorPrimary => fromHex("#294572");
-  Color get whitePrimary => fromHex("#FFFFFF");
-  Color get grey => fromHex("#FFFFFF");
+  Color get whiteColor => fromHex("#FFFFFF");
+  Color get grey => fromHex("#696969");
+
+  TextStyle get text12RegularGrey {
+    return TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.9,
+        color: Colors.grey.withOpacity(0.6));
+  }
 
   TextStyle get text12SemiBoldRed {
     return TextStyle(
@@ -64,6 +72,23 @@ class BaseTheme {
         fontWeight: FontWeight.w500,
         letterSpacing: 0.8,
         color: Colors.red);
+  }
+
+  TextStyle get text12SemiBoldBlack {
+    return TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.8,
+        color: Colors.black,
+        overflow: TextOverflow.ellipsis);
+  }
+
+  TextStyle get text12SemiBoldWhite {
+    return TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.8,
+        color: Colors.white);
   }
 
   TextStyle get text14SemiBolddBlack {
@@ -80,6 +105,14 @@ class BaseTheme {
         fontWeight: FontWeight.w500,
         letterSpacing: 0.8,
         color: Colors.grey);
+  }
+
+  TextStyle get text18BolddBlack {
+    return TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w900,
+      letterSpacing: 0.8,
+    );
   }
 
   TextStyle get text24BoldBlack {

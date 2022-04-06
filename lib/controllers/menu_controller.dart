@@ -11,6 +11,8 @@ class MenuController extends GetxController {
 
   var isMenuShowing = false.obs;
 
+  var isCollapsed = false.obs;
+
   changeActiveItemTo(String itemName) {
     activeItem.value = itemName;
   }
@@ -28,7 +30,7 @@ class MenuController extends GetxController {
       case overviewPageDisplayName:
         return _customIcon(Icons.trending_up, itemName);
       case driversPageDisplayName:
-        return _customIcon(Icons.drive_eta, itemName);
+        return _customIcon(Icons.help_outline, itemName);
       case clientsPageDisplayName:
         return _customIcon(Icons.people_alt_outlined, itemName);
       case authenticationPageDisplayName:

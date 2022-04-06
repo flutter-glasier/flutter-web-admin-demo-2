@@ -5,6 +5,7 @@ import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/controllers/navigation_controller.dart';
 import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
+import 'package:flutter_web_dashboard/utils/navigator.dart';
 import 'package:flutter_web_dashboard/widgets/layout.dart';
 import 'package:flutter_web_dashboard/pages/404/error.dart';
 import 'package:flutter_web_dashboard/pages/authentication/authentication.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: rootRoute,
-      // onGenerateRoute: generateRoute,
+      onGenerateRoute: generateRoute,
       unknownRoute: GetPage(
           name: '/not-found',
           page: () => PageNotFound(),

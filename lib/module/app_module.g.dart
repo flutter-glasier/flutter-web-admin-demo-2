@@ -14,6 +14,7 @@ class _$AppModule extends AppModule {
       ..registerSingleton((c) => ConnectivityService())
       ..registerSingleton((c) => PrefUtils())
       ..registerSingleton((c) => ServiceModule())
+      ..registerSingleton((c) => AppNavigation())
       ..registerSingleton((c) => CustomDialogs());
   }
 }

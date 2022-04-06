@@ -10,7 +10,7 @@ part of 'NetworkService.dart';
 
 class _NetworkService implements NetworkService {
   _NetworkService(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://api.bucks_borrower.knovator.in/api/v1/';
+    baseUrl ??= 'https://api.coinbase.com/v2/currencies';
   }
 
   final Dio _dio;

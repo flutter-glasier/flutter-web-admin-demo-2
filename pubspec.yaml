@@ -30,10 +30,13 @@ dependencies:
     sdk: flutter
   get: ^4.6.1
   google_fonts: ^2.3.1
+  intl: ^0.17.0
   kiwi: ^4.0.2
+  kiwi_generator: ^4.0.2
   retrofit: ^3.0.1+1
   shared_preferences: ^2.0.13
   shimmer: ^2.0.0
+  flutter_styled_toast: ^2.0.0
 
 dev_dependencies:
   build_runner: ^2.1.8

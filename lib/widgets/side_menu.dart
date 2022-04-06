@@ -8,17 +8,23 @@ import 'package:flutter_web_dashboard/widgets/side_menu_item.dart';
 import 'package:get/get.dart';
 
 class SideMenu extends StatelessWidget {
-  const SideMenu({ Key? key }) : super(key: key);
+  VoidCallback? voidCallback;
+  SideMenu({Key? key, this.voidCallback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
 
-    return Container(
-            color: light,
-            child: ListView(
-              children: [
-                if(ResponsiveWidget.isSmallScreen(context))
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          color: light,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              if (ResponsiveWidget.isSmallScreen(context))
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -48,30 +54,40 @@ class SideMenu extends StatelessWidget {
                     ),
                   ],
                 ),
-                    Divider(color: lightGrey.withOpacity(.1), ),
-
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: sideMenuItemRoutes
-                      .map((item) => SideMenuItem(
-                          itemName: item.name,
-                          onTap: () {
-                            if(item.route == authenticationPageRoute){
-                              Get.offAllNamed(authenticationPageRoute);
-                              menuController.changeActiveItemTo(overviewPageDisplayName);
-
-                            }
-                            if (!menuController.isActive(item.name)) {
-                              menuController.changeActiveItemTo(item.name);
-                              if(ResponsiveWidget.isSmallScreen(context))
+              Divider(
+                color: lightGrey.withOpacity(.1),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: sideMenuItemRoutes
+                    .map((item) => SideMenuItem(
+                        itemName: item.name,
+                        onTap: () {
+                          if (item.route == authenticationPageRoute) {
+                            Get.offAllNamed(authenticationPageRoute);
+                            menuController
+                                .changeActiveItemTo(overviewPageDisplayName);
+                          }
+                          if (!menuController.isActive(item.name)) {
+                            menuController.changeActiveItemTo(item.name);
+                            if (ResponsiveWidget.isSmallScreen(context))
                               Get.back();
-                              navigationController.navigateTo(item.route);
-                            }
-                          }))
-                      .toList(),
-                )
-              ],
-            ),
-          );
+                            navigationController.navigateTo(item.route);
+                          }
+                        }))
+                    .toList(),
+              )
+            ],
+          ),
+        ),
+        IconButton(
+            padding: EdgeInsets.only(left: 30),
+            onPressed: () {
+              menuController.isCollapsed.value =
+                  !menuController.isCollapsed.value;
+            },
+            icon: Icon(Icons.swipe_left_sharp, color: Colors.black)),
+      ],
+    );
   }
 }

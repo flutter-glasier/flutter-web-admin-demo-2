@@ -41,26 +41,29 @@ class AvailableDriversTable extends StatelessWidget {
                     width: 10,
                   ),
                   CustomText(
-                    text: "Available Drivers",
+                    text: "Latest enquiries",
                     color: lightGrey,
                     weight: FontWeight.bold,
                   ),
                 ],
               ),
               DataTable2(
-                  columnSpacing: 12,
+                  columnSpacing: 5,
                   horizontalMargin: 12,
                   minWidth: 600,
+                  smRatio: 3 / 4,
                   columns: [
                     DataColumn2(
                       label: Text("Id"),
-                      size: ColumnSize.L,
+                      size: ColumnSize.S,
                     ),
-                    DataColumn(
+                    DataColumn2(
                       label: Text('Name'),
+                      size: ColumnSize.S,
                     ),
-                    DataColumn(
-                      label: Text('Rating'),
+                    DataColumn2(
+                      label: Text('Description'),
+                      size: ColumnSize.L,
                     ),
                     DataColumn(
                       label: Text('Action'),
@@ -78,36 +81,56 @@ class AvailableDriversTable extends StatelessWidget {
                                 DataCell(CustomText(
                                     text: serviceController
                                         .demoResponse.value.data![index].name)),
+                                DataCell(
+                                  Container(
+                                    width: 250,
+                                    // height: 60,
+                                    child: CustomText(
+                                      text:
+                                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquam mauris facilisis arcu faucibus,',
+                                    ),
+                                  ),
+                                ),
                                 DataCell(Row(
-                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    CustomText(
-                                      text: '4.5',
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.deepOrange,
-                                      size: 18,
-                                    ),
+                                    Container(
+                                        margin:
+                                            EdgeInsets.symmetric(horizontal: 8),
+                                        decoration: BoxDecoration(
+                                          color: light,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          border: Border.all(
+                                              color: active, width: .5),
+                                        ),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12, vertical: 6),
+                                        child: CustomText(
+                                          text: "View",
+                                          size: 12,
+                                          color: active.withOpacity(.7),
+                                          weight: FontWeight.bold,
+                                        )),
+                                    Container(
+                                        decoration: BoxDecoration(
+                                          color: light,
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          border: Border.all(
+                                              color: active, width: .5),
+                                        ),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12, vertical: 6),
+                                        child: CustomText(
+                                          text: "Assign",
+                                          size: 12,
+                                          color: active.withOpacity(.7),
+                                          weight: FontWeight.bold,
+                                        )),
                                   ],
                                 )),
-                                DataCell(Container(
-                                    decoration: BoxDecoration(
-                                      color: light,
-                                      borderRadius: BorderRadius.circular(20),
-                                      border:
-                                          Border.all(color: active, width: .5),
-                                    ),
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 6),
-                                    child: CustomText(
-                                      text: "Assign Delivery",
-                                      color: active.withOpacity(.7),
-                                      weight: FontWeight.bold,
-                                    ))),
                               ]))),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

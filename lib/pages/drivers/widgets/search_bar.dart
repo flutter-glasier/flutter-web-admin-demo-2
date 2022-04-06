@@ -16,7 +16,7 @@ class SearchBar extends StatelessWidget {
         border: Border.all(
           color: Colors.grey.withOpacity(0.5),
         ),
-        color: appTheme!.whitePrimary,
+        color: appTheme!.whiteColor,
       ),
       child: TextFormField(
         controller: _searchController,

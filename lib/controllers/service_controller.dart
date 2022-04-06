@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as d;
 import 'package:flutter_web_dashboard/constants/constants.dart';
 import 'package:flutter_web_dashboard/models/DemoResponse.dart';
+import 'package:flutter_web_dashboard/models/StaffResponse.dart';
 import 'package:flutter_web_dashboard/network/NetworkCall.dart';
 
 import 'package:get/get.dart';
@@ -9,13 +10,19 @@ class ServiceController extends GetxController {
   var isLoading = true.obs;
   @override
   void onInit() {
-    getCovidData().whenComplete(() => Future.delayed(Duration(seconds: 2))
-        .then((value) => isLoading.value = false));
+    getCovidData().whenComplete(() {
+      Future.delayed(Duration(seconds: 2))
+          .then((value) => isLoading.value = false);
+      getFakeUsersData().whenComplete(() => Future.delayed(Duration(seconds: 2))
+          .then((value) => isLoading.value = false));
+    });
+
     super.onInit();
   }
 
   var page = 0.obs;
   var demoResponse = DemoResponse().obs;
+  var fakeUserResponse = StaffResponse().obs;
 
   d.Response? response;
 
@@ -30,5 +37,15 @@ class ServiceController extends GetxController {
     demoResponse.value = DemoResponse.fromJson(response!.data);
 
     return DemoResponse.fromJson(response!.data);
+  }
+
+  Future<StaffResponse> getFakeUsersData() async {
+    isLoading.value = true;
+
+    response = await dio.get('https://randomuser.me/api/');
+
+    fakeUserResponse.value = StaffResponse.fromJson(response!.data);
+
+    return StaffResponse.fromJson(response!.data);
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/helpers/reponsiveness.dart';
 import 'package:flutter_web_dashboard/constants/controllers.dart';
+import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
 import 'package:flutter_web_dashboard/pages/overview/widgets/available_drivers_table.dart';
 import 'package:flutter_web_dashboard/pages/overview/widgets/notification_dialog.dart';
 import 'package:flutter_web_dashboard/pages/overview/widgets/overview_cards_large.dart';
@@ -33,6 +34,10 @@ class OverviewPage extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
+          // Expanded(child: EditProfile())
           Expanded(
               child: ListView(
             children: [

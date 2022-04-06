@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
+import 'package:flutter_web_dashboard/pages/authentication/authentication.dart';
 import 'package:flutter_web_dashboard/pages/clients/clients.dart';
 import 'package:flutter_web_dashboard/pages/drivers/drivers.dart';
 import 'package:flutter_web_dashboard/pages/overview/overview.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
+import 'package:flutter_web_dashboard/utils/fade_route.dart';
 
 class NavigationUtilities {
   static GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
@@ -61,6 +63,7 @@ enum RouteType {
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
+  print(settings.name);
   switch (settings.name) {
     case overviewPageRoute:
       return _getPageRoute(OverviewPage());
@@ -77,4 +80,42 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
 PageRoute _getPageRoute(Widget child) {
   return MaterialPageRoute(builder: (context) => child);
+}
+
+/// [onGenerateRoute] is called whenever a new named route is being pushed to
+/// the app.
+///
+/// The [RouteSettings.arguments] that can be passed along the named route
+/// needs to be a `Map<String, dynamic>` and can be used to pass along
+/// arguments for the screen.
+Route<dynamic> onGenerateRoute(RouteSettings settings) {
+  final routeName = settings.name;
+  final arguments = settings.arguments as Map<String, dynamic>? ?? {};
+  final routeType =
+      arguments["routeType"] as RouteType? ?? RouteType.defaultRoute;
+
+  late Widget screen;
+
+  switch (routeName) {
+    case AuthenticationPage.route:
+      screen = AuthenticationPage();
+      break;
+    case EditProfile.route:
+      screen = EditProfile();
+      break;
+  }
+
+  switch (routeType) {
+    case RouteType.fade:
+      return FadeRoute(
+        builder: (_) => screen,
+        settings: RouteSettings(name: routeName),
+      );
+    case RouteType.defaultRoute:
+    default:
+      return MaterialPageRoute(
+        builder: (_) => screen,
+        settings: RouteSettings(name: routeName),
+      );
+  }
 }

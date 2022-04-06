@@ -3,10 +3,10 @@ const rootRoute = "/";
 const overviewPageDisplayName = "Overview";
 const overviewPageRoute = "/overview";
 
-const driversPageDisplayName = "Drivers";
+const driversPageDisplayName = "Enquiries";
 const driversPageRoute = "/drivers";
 
-const clientsPageDisplayName = "Clients";
+const clientsPageDisplayName = "Staff";
 const clientsPageRoute = "/clients";
 const editProfilePageDisplayName = "Edit-profile";
 const editProfileRoute = "/edit-profile";

@@ -1,3 +1,4 @@
+import 'package:flutter_web_dashboard/helpers/app_navigation.dart';
 import 'package:flutter_web_dashboard/network/ServiceModule.dart';
 import 'package:kiwi/kiwi.dart';
 
@@ -11,6 +12,7 @@ abstract class AppModule {
   @Register.singleton(ConnectivityService)
   @Register.singleton(PrefUtils)
   @Register.singleton(ServiceModule)
+  @Register.singleton(AppNavigation)
   @Register.singleton(CustomDialogs)
   void configure();
 }
