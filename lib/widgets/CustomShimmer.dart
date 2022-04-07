@@ -17,16 +17,15 @@ class CustomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Shimmer.fromColors(
-        baseColor: Colors.grey,
+        baseColor: Color.fromARGB(255, 197, 193, 193),
         highlightColor: Colors.grey[300]!,
         period: Duration(seconds: 2),
         child: Container(
           width: width,
           height: height,
-          decoration: ShapeDecoration(
-            color: Colors.grey[400]!,
-            shape: shapeBorder,
-          ),
+          decoration: BoxDecoration(
+              color: Colors.grey[400]!,
+              borderRadius: BorderRadius.circular(10)),
         ),
       );
 }

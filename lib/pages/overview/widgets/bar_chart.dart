@@ -15,7 +15,7 @@ class SimpleBarChart extends StatelessWidget {
     return new SimpleBarChart(
       _createSampleData(),
       // Disable animations for image tests.
-      animate: false,
+      animate: true,
     );
   }
 
@@ -24,6 +24,7 @@ class SimpleBarChart extends StatelessWidget {
     return new charts.BarChart(
       seriesList as List<Series<dynamic, String>>,
       animate: animate,
+      animationDuration: const Duration(seconds: 3),
     );
   }
 

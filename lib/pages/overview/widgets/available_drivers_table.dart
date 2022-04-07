@@ -222,24 +222,35 @@ class AvailableDriversTable extends StatelessWidget {
       (index) => DataRow(cells: [
             DataCell(CustomWidget.rectangular(
               height: 15,
-              width: 100,
+              width: 30,
             )),
             DataCell(
               CustomWidget.rectangular(
                 height: 10,
-                width: 30,
+                width: 100,
               ),
             ),
             DataCell(
               CustomWidget.rectangular(
                 height: 10,
-                width: 30,
+                width: 100,
               ),
             ),
             DataCell(
-              CustomWidget.rectangular(
-                height: 10,
-                width: 30,
+              Row(
+                children: [
+                  CustomWidget.rectangular(
+                    height: 10,
+                    width: 30,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  CustomWidget.rectangular(
+                    height: 10,
+                    width: 30,
+                  ),
+                ],
               ),
             ),
           ]));

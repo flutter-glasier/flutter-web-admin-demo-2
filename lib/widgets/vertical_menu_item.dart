@@ -13,7 +13,6 @@ class VertticalMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
         onTap: onTap as void Function()?,
         onHover: (value) {
@@ -60,7 +59,7 @@ class VertticalMenuItem extends StatelessWidget {
                             Flexible(
                                 child: CustomText(
                               text: itemName,
-                              color: Colors.white,
+                              color: Colors.black,
                               size: 18,
                               weight: FontWeight.bold,
                             ))

@@ -330,18 +330,18 @@ class Clientstable extends StatelessWidget {
       (index) => DataRow(cells: [
             DataCell(CustomWidget.rectangular(
               height: 15,
-              width: 100,
+              width: 50,
             )),
             DataCell(
               CustomWidget.rectangular(
                 height: 10,
-                width: 30,
+                width: 120,
               ),
             ),
             DataCell(
               CustomWidget.rectangular(
                 height: 10,
-                width: 30,
+                width: 120,
               ),
             ),
             DataCell(

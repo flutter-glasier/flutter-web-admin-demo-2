@@ -38,7 +38,9 @@ class EditProfile extends StatelessWidget {
     return Scaffold(
       backgroundColor: appTheme!.whiteColor,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 100, vertical: 50),
+        padding: EdgeInsets.symmetric(
+            horizontal: ResponsiveWidget.isSmallScreen(context) ? 40 : 100,
+            vertical: 50),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,15 +72,23 @@ class EditProfile extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              avatar(),
-              bioDescription(),
-              firstNameTextField(),
-              lastNameTextField(),
-              emailTextField(),
-              mobileTextField(),
-              bioTextField(),
-              CustomWidgets().getButton(() {}, 'Update Account',
-                  buttonHeight: 40, buttonWidth: 300)
+              avatar(context),
+              bioDescription(context),
+              firstNameTextField(context),
+              lastNameTextField(context),
+              emailTextField(context),
+              mobileTextField(context),
+              bioTextField(context),
+              CustomWidgets().getButton(
+                () {},
+                'Update Account',
+                buttonHeight: 40,
+                buttonWidth: ResponsiveWidget.isSmallScreen(context)
+                    ? 380
+                    : ResponsiveWidget.isMediumScreen(context)
+                        ? 365
+                        : 300,
+              )
             ],
           ),
         ),
@@ -88,12 +98,12 @@ class EditProfile extends StatelessWidget {
 
   //Avatar-header
 
-  Widget avatar() => Container(
-        width: 300,
+  Widget avatar(BuildContext context) => Container(
+        width: ResponsiveWidget.isSmallScreen(context) ? 380 : 300,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [profilePic(), actions()],
+          children: [profilePic(context), actions()],
         ),
       );
 
@@ -147,20 +157,17 @@ class EditProfile extends StatelessWidget {
 
   //Profile-pic avatar
 
-  Widget profilePic() => ClipRRect(
-        borderRadius: BorderRadius.circular(70),
-        child: Image.network(
+  Widget profilePic(BuildContext context) => CircleAvatar(
+        radius: ResponsiveWidget.isSmallScreen(context) ? 50 : 60,
+        backgroundImage: NetworkImage(
           'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-          fit: BoxFit.cover,
-          height: 90,
-          width: 100,
         ),
       );
 
   //Bio-description
 
-  Widget bioDescription() => Container(
-        width: 300,
+  Widget bioDescription(BuildContext context) => Container(
+        width: ResponsiveWidget.isSmallScreen(context) ? 380 : 300,
         margin: EdgeInsets.symmetric(vertical: 20),
         child: Text(
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquam mauris facilisis arcu faucibus, id venenatis nulla pretium. Integer elementum magna consequat risus ornare maximus. Quisque eu augue ac ex euismod vehicula. In vehicula sodales tellus id scelerisque. In quis metus non arcu aliquet faucibus ut in tellus.  ',
@@ -170,9 +177,13 @@ class EditProfile extends StatelessWidget {
 
   //First-Name text-field
 
-  Widget firstNameTextField() => CommonTextfield(
+  Widget firstNameTextField(BuildContext context) => CommonTextfield(
         textFieldHeight: 40,
-        textFieldWidth: 300,
+        textFieldWidth: ResponsiveWidget.isSmallScreen(context)
+            ? 380
+            : ResponsiveWidget.isMediumScreen(context)
+                ? 365
+                : 300,
         focusNode: _firstNameFocus,
         label: 'First-Name',
         textOption: TextFieldOption(
@@ -182,9 +193,13 @@ class EditProfile extends StatelessWidget {
 
   //Last-Name text-field
 
-  Widget lastNameTextField() => CommonTextfield(
+  Widget lastNameTextField(BuildContext context) => CommonTextfield(
         textFieldHeight: 40,
-        textFieldWidth: 300,
+        textFieldWidth: ResponsiveWidget.isSmallScreen(context)
+            ? 380
+            : ResponsiveWidget.isMediumScreen(context)
+                ? 365
+                : 300,
         focusNode: _lastNameFocus,
         label: 'Last-Name',
         textOption: TextFieldOption(
@@ -194,9 +209,13 @@ class EditProfile extends StatelessWidget {
 
   //Last-Name text-field
 
-  Widget emailTextField() => CommonTextfield(
+  Widget emailTextField(BuildContext context) => CommonTextfield(
         textFieldHeight: 40,
-        textFieldWidth: 300,
+        textFieldWidth: ResponsiveWidget.isSmallScreen(context)
+            ? 380
+            : ResponsiveWidget.isMediumScreen(context)
+                ? 365
+                : 300,
         focusNode: _emailFocus,
         readOnly: true,
         label: 'E-mail',
@@ -207,9 +226,13 @@ class EditProfile extends StatelessWidget {
             keyboardType: TextInputType.emailAddress),
       );
 
-  Widget mobileTextField() => CommonTextfield(
+  Widget mobileTextField(BuildContext context) => CommonTextfield(
         textFieldHeight: 40,
-        textFieldWidth: 300,
+        textFieldWidth: ResponsiveWidget.isSmallScreen(context)
+            ? 380
+            : ResponsiveWidget.isMediumScreen(context)
+                ? 365
+                : 300,
         focusNode: _mobileNumberFocus,
         label: 'Phone-number',
         textOption: TextFieldOption(
@@ -218,9 +241,13 @@ class EditProfile extends StatelessWidget {
             keyboardType: TextInputType.phone),
       );
 
-  Widget bioTextField() => CommonTextfield(
+  Widget bioTextField(BuildContext context) => CommonTextfield(
         textFieldHeight: 70,
-        textFieldWidth: 300,
+        textFieldWidth: ResponsiveWidget.isSmallScreen(context)
+            ? 380
+            : ResponsiveWidget.isMediumScreen(context)
+                ? 365
+                : 300,
         focusNode: _bioFocusNode,
         label: 'Bio',
         textOption: TextFieldOption(
