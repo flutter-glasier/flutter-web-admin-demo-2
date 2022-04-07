@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_dashboard/pages/overview/widgets/stagger_animation.dart';
 import 'info_card_small.dart';
 
 class OverviewCardsSmallScreen extends StatelessWidget {
