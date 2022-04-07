@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/helpers/reponsiveness.dart';
 import 'package:flutter_web_dashboard/constants/controllers.dart';
@@ -18,47 +19,60 @@ class OverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Obx(
-            () => Row(
-              children: [
-                Container(
-                    margin: EdgeInsets.only(
-                        top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
-                    child: CustomText(
-                      text: menuController.activeItem.value,
-                      size: 24,
-                      weight: FontWeight.bold,
-                    )),
-              ],
+        child: SingleChildScrollView(
+      child: AnimationLimiter(
+          child: Column(
+        children: AnimationConfiguration.toStaggeredList(
+          duration: const Duration(seconds: 2),
+          childAnimationBuilder: (widget) => SlideAnimation(
+            horizontalOffset: 50.0,
+            child: FadeInAnimation(
+              curve: Curves.easeInOut,
+              child: widget,
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          // Expanded(child: EditProfile())
-          Expanded(
-              child: ListView(
-            children: [
-              if (ResponsiveWidget.isLargeScreen(context) ||
-                  ResponsiveWidget.isMediumScreen(context))
-                if (ResponsiveWidget.isCustomSize(context))
-                  OverviewCardsMediumScreen()
+          children: [
+            Obx(
+              () => Row(
+                children: [
+                  Container(
+                      margin: EdgeInsets.only(
+                          top:
+                              ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
+                      child: CustomText(
+                        text: menuController.activeItem.value,
+                        size: 24,
+                        weight: FontWeight.bold,
+                      )),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            // // Expanded(child: EditProfile())
+            ListView(
+              shrinkWrap: true,
+              children: [
+                if (ResponsiveWidget.isLargeScreen(context) ||
+                    ResponsiveWidget.isMediumScreen(context))
+                  if (ResponsiveWidget.isCustomSize(context))
+                    OverviewCardsMediumScreen()
+                  else
+                    OverviewCardsLargeScreen()
                 else
-                  OverviewCardsLargeScreen()
-              else
-                OverviewCardsSmallScreen(),
-              if (!ResponsiveWidget.isSmallScreen(context))
-                RevenueSectionLarge()
-              else
-                RevenueSectionSmall(),
-              AvailableDriversTable(),
-            ],
-          ))
-        ],
-      ),
-    );
+                  OverviewCardsSmallScreen(),
+                if (!ResponsiveWidget.isSmallScreen(context))
+                  RevenueSectionLarge()
+                else
+                  RevenueSectionSmall(),
+                AvailableDriversTable(),
+              ],
+            )
+          ],
+        ),
+      )),
+    ));
     // NotificationDialog()
   }
 }
