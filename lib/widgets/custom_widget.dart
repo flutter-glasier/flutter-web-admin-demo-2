@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/widgets/buttons.dart';
 
 import '../helpers/theme_helper.dart';
@@ -37,4 +39,8 @@ class CustomWidgets {
         curve: Curves.elasticOut,
         reverseCurve: Curves.linear,
       );
+
+  final spinkit = SpinKitCubeGrid(
+    color: active,
+  );
 }

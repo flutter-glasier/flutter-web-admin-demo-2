@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/controllers/navigation_controller.dart';
+import 'package:flutter_web_dashboard/controllers/service_controller.dart';
 import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
 import 'package:flutter_web_dashboard/utils/navigator.dart';
 import 'package:flutter_web_dashboard/widgets/layout.dart';
@@ -20,6 +21,7 @@ late KiwiContainer app;
 void main() {
   Get.put(MenuController());
   Get.put(NavigationController());
+  Get.put(ServiceController());
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: appTheme!.colorPrimary, // navigation bar color
     statusBarColor: appTheme!.colorPrimary, // status bar color

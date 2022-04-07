@@ -37,6 +37,7 @@ class Clientstable extends StatelessWidget {
           horizontalMargin: 12,
           minWidth: 600,
           smRatio: 3 / 4,
+          showCheckboxColumn: true,
           columns: [
             DataColumn2(
               label: Text("Avatar"),
@@ -288,6 +289,8 @@ class Clientstable extends StatelessWidget {
                                               .results![index].name!.first! +
                                           ' deleted',
                                       context);
+                                  print(serviceController
+                                      .fakeUserResponse.value.results!.length);
                                 },
                                 icon: Icon(
                                   Icons.delete_outline,

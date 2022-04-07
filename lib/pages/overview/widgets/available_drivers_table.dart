@@ -138,7 +138,7 @@ class AvailableDriversTable extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       serviceController.page.value--;
-                      serviceController.getCovidData().whenComplete(
+                      serviceController.getDummyData().whenComplete(
                           () => serviceController.isLoading.value = false);
                     },
                     child: Container(
@@ -169,7 +169,7 @@ class AvailableDriversTable extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) => InkWell(
                         onTap: () {
                           serviceController.page.value = index;
-                          serviceController.getCovidData().whenComplete(
+                          serviceController.getDummyData().whenComplete(
                               () => serviceController.isLoading.value = false);
                         },
                         child: Container(
@@ -192,7 +192,7 @@ class AvailableDriversTable extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       serviceController.page.value++;
-                      serviceController.getCovidData().whenComplete(
+                      serviceController.getDummyData().whenComplete(
                           () => serviceController.isLoading.value = false);
                     },
                     child: Container(

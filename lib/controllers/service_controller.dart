@@ -8,11 +8,13 @@ class ServiceController extends GetxController {
   var isLoading = true.obs;
   @override
   void onInit() {
-    getCovidData().whenComplete(() {
+    getDummyData().whenComplete(() {
       Future.delayed(Duration(seconds: 2))
           .then((value) => isLoading.value = false);
-      getFakeUsersData().whenComplete(() => Future.delayed(Duration(seconds: 2))
-          .then((value) => isLoading.value = false));
+    });
+    getFakeUsersData().whenComplete(() {
+      Future.delayed(Duration(seconds: 2))
+          .then((value) => isLoading.value = false);
     });
 
     super.onInit();
@@ -26,7 +28,7 @@ class ServiceController extends GetxController {
 
   final dio = d.Dio();
 
-  Future<DemoResponse> getCovidData() async {
+  Future<DemoResponse> getDummyData() async {
     isLoading.value = true;
 
     response = await dio.get(
@@ -39,6 +41,8 @@ class ServiceController extends GetxController {
 
   Future<StaffResponse> getFakeUsersData() async {
     isLoading.value = true;
+
+    print('Gets called');
 
     response = await dio.get('https://randomuser.me/api/');
 

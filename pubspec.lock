@@ -256,13 +256,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_staggered_animations:
+  flutter_spinkit:
     dependency: "direct main"
     description:
-      name: flutter_staggered_animations
+      name: flutter_spinkit
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "5.1.0"
   flutter_styled_toast:
     dependency: "direct main"
     description:
