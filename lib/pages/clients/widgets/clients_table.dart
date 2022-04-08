@@ -37,7 +37,7 @@ class Clientstable extends StatelessWidget {
           horizontalMargin: 12,
           minWidth: 600,
           smRatio: 3 / 4,
-          showCheckboxColumn: true,
+            
           columns: [
             DataColumn2(
               label: Text("Avatar"),

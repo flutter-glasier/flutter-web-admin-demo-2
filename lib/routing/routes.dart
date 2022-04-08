@@ -14,6 +14,8 @@ const editProfileRoute = "/edit-profile";
 const authenticationPageDisplayName = "Log out";
 const authenticationPageRoute = "/auth";
 
+const viewEnquiryDetails = "/view-enquiry";
+
 class MenuItem {
   final String name;
   final String route;

@@ -2,6 +2,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
+import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
@@ -92,24 +93,29 @@ class DriversTable extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Container(
-                                        margin:
-                                            EdgeInsets.symmetric(horizontal: 8),
-                                        decoration: BoxDecoration(
-                                          color: light,
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          border: Border.all(
-                                              color: active, width: .5),
-                                        ),
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 12, vertical: 6),
-                                        child: CustomText(
-                                          text: "View",
-                                          size: 12,
-                                          color: active.withOpacity(.7),
-                                          weight: FontWeight.bold,
-                                        )),
+                                    InkWell(
+                                      onTap: () {
+                                        Get.toNamed(viewEnquiryDetails);
+                                      },
+                                      child: Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          decoration: BoxDecoration(
+                                            color: light,
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(
+                                                color: active, width: .5),
+                                          ),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 12, vertical: 6),
+                                          child: CustomText(
+                                            text: "View",
+                                            size: 12,
+                                            color: active.withOpacity(.7),
+                                            weight: FontWeight.bold,
+                                          )),
+                                    ),
                                     Container(
                                         decoration: BoxDecoration(
                                           color: light,
