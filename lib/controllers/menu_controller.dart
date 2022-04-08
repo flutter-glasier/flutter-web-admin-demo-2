@@ -29,7 +29,7 @@ class MenuController extends GetxController {
     switch (itemName) {
       case overviewPageDisplayName:
         return _customIcon(Icons.trending_up, itemName);
-      case driversPageDisplayName:
+      case enquiryPageDisplayName:
         return _customIcon(Icons.help_outline, itemName);
       case clientsPageDisplayName:
         return _customIcon(Icons.people_alt_outlined, itemName);
@@ -37,6 +37,10 @@ class MenuController extends GetxController {
         return _customIcon(Icons.exit_to_app, itemName);
       case editProfilePageDisplayName:
         return _customIcon(Icons.edit_outlined, itemName);
+      case viewEnquiryDetails:
+        return _customIcon(Icons.edit_outlined, itemName);
+      case chatPageDisplayName:
+        return _customIcon(Icons.chat, itemName);
       default:
         return _customIcon(Icons.exit_to_app, itemName);
     }

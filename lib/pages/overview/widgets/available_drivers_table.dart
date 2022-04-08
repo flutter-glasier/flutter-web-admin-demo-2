@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import '../../../models/DemoResponse.dart';
 
 /// Example without datasource
-class AvailableDriversTable extends StatelessWidget {
+class AvailableEnquiryTable extends StatelessWidget {
   ServiceController serviceController = Get.put(ServiceController());
 
   @override

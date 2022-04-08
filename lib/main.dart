@@ -6,7 +6,6 @@ import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/controllers/navigation_controller.dart';
 import 'package:flutter_web_dashboard/controllers/service_controller.dart';
 import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
-import 'package:flutter_web_dashboard/pages/enquiry/enquiry.dart';
 import 'package:flutter_web_dashboard/utils/navigator.dart';
 import 'package:flutter_web_dashboard/widgets/layout.dart';
 import 'package:flutter_web_dashboard/pages/404/error.dart';
@@ -16,6 +15,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kiwi/kiwi.dart';
 
 import 'helpers/theme_helper.dart';
+import 'pages/view-enquiry/enquiry.dart';
 import 'routing/routes.dart';
 
 late KiwiContainer app;
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: rootRoute,
+      initialRoute: authenticationPageRoute,
       onGenerateRoute: generateRoute,
       unknownRoute: GetPage(
           name: '/not-found',

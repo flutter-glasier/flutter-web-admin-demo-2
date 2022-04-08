@@ -12,11 +12,8 @@ dynamic getFontSize(double px) {
           1368);
 }
 
-dynamic getPercentageWidth(double percentage) {
-  return MathUtilities.screenWidth(
-          NavigationUtilities.key.currentState!.overlay!.context) *
-      percentage /
-      100;
+dynamic getPercentageWidth(double percentage, BuildContext context) {
+  return MathUtilities.screenWidth(context) * percentage / 100;
 }
 
 class MathUtilities {

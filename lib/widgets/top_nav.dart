@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/helpers/reponsiveness.dart';
+import 'package:flutter_web_dashboard/helpers/theme_helper.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:get/get.dart';
 
@@ -10,35 +11,6 @@ import 'custom_text.dart';
 MenuController menuController = Get.put(MenuController());
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
     AppBar(
-      actions: [
-        PopupMenuButton(
-          onSelected: (value) {
-            print(value.toString());
-          },
-          icon: Icon(Icons.more_vert),
-          itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-            const PopupMenuItem(
-              mouseCursor: MouseCursor.defer,
-              child: ListTile(
-                leading: Icon(Icons.edit_outlined),
-                title: Text('Edit Profile'),
-              ),
-            ),
-            const PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.share),
-                title: Text('Share'),
-              ),
-            ),
-            const PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.logout),
-                title: Text('Logout'),
-              ),
-            ),
-          ],
-        )
-      ],
       leading: !ResponsiveWidget.isSmallScreen(context)
           ? Row(
               children: [
@@ -135,10 +107,8 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
                   margin: EdgeInsets.all(2),
                   child: CircleAvatar(
                     backgroundColor: light,
-                    child: Icon(
-                      Icons.person_outline,
-                      color: dark,
-                    ),
+                    backgroundImage: NetworkImage(
+                        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'),
                   ),
                 ),
               ),
@@ -148,7 +118,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       ),
       iconTheme: IconThemeData(color: dark),
       elevation: 0,
-      backgroundColor: Colors.transparent,
+      backgroundColor: appTheme!.whiteColor,
     );
 
 void _showPopupMenu(BuildContext context) async {

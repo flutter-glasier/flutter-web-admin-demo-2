@@ -1,44 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_dashboard/constants/style.dart';
-import 'package:flutter_web_dashboard/pages/enquiry/widgets/client_profile.dart';
-import 'package:flutter_web_dashboard/pages/enquiry/widgets/document_listing.dart';
-import 'package:flutter_web_dashboard/pages/enquiry/widgets/enquiry_description.dart';
-import 'package:flutter_web_dashboard/pages/enquiry/widgets/enquiry_header.dart';
-import 'package:flutter_web_dashboard/widgets/custom_widget.dart';
+import 'package:flutter_web_dashboard/constants/controllers.dart';
+import 'package:flutter_web_dashboard/helpers/reponsiveness.dart';
+import 'package:flutter_web_dashboard/pages/enquiry/widgets/enquiry_table.dart';
 
-class Enquiry extends StatelessWidget {
-  const Enquiry({Key? key}) : super(key: key);
+import 'package:flutter_web_dashboard/widgets/custom_text.dart';
+import 'package:get/get.dart';
+
+import 'widgets/search_bar.dart';
+
+class EnquiryPage extends StatelessWidget {
+  const EnquiryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            EnquiryHeaders(),
-            Row(
-              children: [
-                Flexible(flex: 6, child: EnquiryDescription()),
-                Flexible(flex: 2, child: ClientProfile())
-              ],
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 50),
+      child: Column(
+        children: [
+          // Obx(
+          //   () => Row(
+          //     children: [
+          //       Container(
+          //           margin: EdgeInsets.only(
+          //               top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
+          //           child: CustomText(
+          //             text: menuController.activeItem.value,
+          //             size: 24,
+          //             weight: FontWeight.bold,
+          //           )),
+          //     ],
+          //   ),
+          // ),
+          Expanded(
+            flex: 1,
+            child: ListView(
+              shrinkWrap: true,
+              children: [SearchBar(), EnquiryTable()],
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 6,
-                  child: CustomWidgets().getButton(() {}, 'Start Conversation',
-                      horizontalMargin: 30),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: DocumentListing(),
-                )
-              ],
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

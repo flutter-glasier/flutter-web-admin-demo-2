@@ -58,6 +58,30 @@ class BaseTheme {
   Color get whiteColor => fromHex("#FFFFFF");
   Color get grey => fromHex("#696969");
 
+  TextStyle get text8RegularWhite {
+    return TextStyle(
+        fontSize: 8,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.9,
+        color: Colors.white);
+  }
+
+  TextStyle get text9RegularGreen {
+    return TextStyle(
+        fontSize: 9,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.9,
+        color: Colors.green);
+  }
+
+  TextStyle get text9RegularGrey {
+    return TextStyle(
+        fontSize: 9,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.9,
+        color: Colors.grey.withOpacity(0.6));
+  }
+
   TextStyle get text10Blue500Semi {
     return TextStyle(
         fontSize: 10,

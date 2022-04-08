@@ -8,5 +8,5 @@ import '../utils/navigator.dart';
 Navigator localNavigator() => Navigator(
       key: navigationController.navigatorKey,
       onGenerateRoute: generateRoute,
-      initialRoute: rootRoute,
+      initialRoute: authenticationPageRoute,
     );

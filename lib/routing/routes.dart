@@ -3,8 +3,8 @@ const rootRoute = "/";
 const overviewPageDisplayName = "Overview";
 const overviewPageRoute = "/overview";
 
-const driversPageDisplayName = "Enquiries";
-const driversPageRoute = "/drivers";
+const enquiryPageDisplayName = "Enquiries";
+const enquiryPageRoute = "/enquiries";
 
 const clientsPageDisplayName = "Staff";
 const clientsPageRoute = "/clients";
@@ -14,7 +14,10 @@ const editProfileRoute = "/edit-profile";
 const authenticationPageDisplayName = "Log out";
 const authenticationPageRoute = "/auth";
 
-const viewEnquiryDetails = "/view-enquiry";
+const chatPageDisplayName = "Chat";
+const chatPageRoute = "/chat";
+
+const viewEnquiryDetails = "/drivers/:view-enquiry";
 
 class MenuItem {
   final String name;
@@ -25,8 +28,9 @@ class MenuItem {
 
 List<MenuItem> sideMenuItemRoutes = [
   MenuItem(overviewPageDisplayName, overviewPageRoute),
-  MenuItem(driversPageDisplayName, driversPageRoute),
+  MenuItem(enquiryPageDisplayName, enquiryPageRoute),
   MenuItem(clientsPageDisplayName, clientsPageRoute),
   MenuItem(editProfilePageDisplayName, editProfileRoute),
+  MenuItem(chatPageDisplayName, chatPageRoute),
   MenuItem(authenticationPageDisplayName, authenticationPageRoute),
 ];

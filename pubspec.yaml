@@ -38,6 +38,7 @@ dependencies:
   shimmer: ^2.0.0
   flutter_styled_toast: ^2.0.0
   flutter_spinkit: ^5.1.0
+  flutter_chat_bubble: ^2.0.0
 
 dev_dependencies:
   build_runner: ^2.1.8

@@ -1,7 +1,9 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_web_dashboard/constants/controllers.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
+import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
 import 'package:get/get.dart';
@@ -11,8 +13,9 @@ import '../../../helpers/theme_helper.dart';
 import '../../../widgets/CustomShimmer.dart';
 
 /// Example without datasource
-class DriversTable extends StatelessWidget {
+class EnquiryTable extends StatelessWidget {
   ServiceController serviceController = Get.put(ServiceController());
+  MenuController menuController = Get.put(MenuController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -95,6 +98,9 @@ class DriversTable extends StatelessWidget {
                                   children: [
                                     InkWell(
                                       onTap: () {
+                                        print('Pressed');
+                                        menuController.changeActiveItemTo(
+                                            viewEnquiryDetails);
                                         Get.toNamed(viewEnquiryDetails);
                                       },
                                       child: Container(

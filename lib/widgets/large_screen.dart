@@ -6,7 +6,8 @@ import 'package:flutter_web_dashboard/widgets/side_menu.dart';
 import 'package:get/get.dart';
 
 class LargeScreen extends StatefulWidget {
-  LargeScreen({Key? key}) : super(key: key);
+  Widget? widget;
+  LargeScreen({Key? key, this.widget}) : super(key: key);
 
   @override
   State<LargeScreen> createState() => _LargeScreenState();
@@ -57,7 +58,7 @@ class _LargeScreenState extends State<LargeScreen>
                 flex: menuController.isCollapsed.value ? 15 : 5,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 16),
-                  child: localNavigator(),
+                  child: widget.widget ?? localNavigator(),
                 ))
           ],
         ));

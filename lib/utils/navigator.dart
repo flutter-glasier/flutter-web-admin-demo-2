@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
 import 'package:flutter_web_dashboard/pages/authentication/authentication.dart';
+import 'package:flutter_web_dashboard/pages/chat/chat.dart';
 import 'package:flutter_web_dashboard/pages/clients/clients.dart';
-import 'package:flutter_web_dashboard/pages/drivers/drivers.dart';
+import 'package:flutter_web_dashboard/pages/enquiry/enquiry.dart';
+import 'package:flutter_web_dashboard/pages/enquiry/widgets/enquiry_table.dart';
+
 import 'package:flutter_web_dashboard/pages/overview/overview.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:flutter_web_dashboard/utils/fade_route.dart';
+
+import '../pages/view-enquiry/enquiry.dart';
 
 class NavigationUtilities {
   static GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
@@ -67,12 +72,16 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case overviewPageRoute:
       return _getPageRoute(OverviewPage());
-    case driversPageRoute:
-      return _getPageRoute(DriversPage());
+    case enquiryPageRoute:
+      return _getPageRoute(EnquiryPage());
     case clientsPageRoute:
       return _getPageRoute(ClientsPage());
+    case viewEnquiryDetails:
+      return _getPageRoute(Enquiry());
     case editProfileRoute:
       return _getPageRoute(EditProfile());
+    case chatPageRoute:
+      return _getPageRoute(ChatScreen());
     default:
       return _getPageRoute(OverviewPage());
   }

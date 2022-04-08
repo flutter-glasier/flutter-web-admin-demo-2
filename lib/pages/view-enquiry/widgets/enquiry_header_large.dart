@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/helpers/theme_helper.dart';
 
-class EnquiryHeaders extends StatelessWidget {
-  const EnquiryHeaders({Key? key}) : super(key: key);
+class EnquiryHeadersLarge extends StatelessWidget {
+  const EnquiryHeadersLarge({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

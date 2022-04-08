@@ -25,6 +25,7 @@ class EnquiryDescription extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         // mainAxisSize: MainAxisSize.min,
         children: [
           Text(
