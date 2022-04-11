@@ -6,6 +6,7 @@ import 'package:flutter_web_dashboard/helpers/theme_helper.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:get/get.dart';
 
+import '../constants/controllers.dart';
 import 'custom_text.dart';
 
 MenuController menuController = Get.put(MenuController());
@@ -93,7 +94,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             InkWell(
               onTap: () async {
                 // Get.toNamed(editProfileRoute);
-                menuController.changeActiveItemTo(editProfilePageDisplayName);
+                navigationController.navigateTo(editProfileRoute);
               },
               child: Container(
                 decoration: BoxDecoration(

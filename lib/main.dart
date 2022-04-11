@@ -6,6 +6,7 @@ import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/controllers/navigation_controller.dart';
 import 'package:flutter_web_dashboard/controllers/service_controller.dart';
 import 'package:flutter_web_dashboard/pages/EditProfile/edit_profile.dart';
+import 'package:flutter_web_dashboard/pages/utility/success_screen.dart';
 import 'package:flutter_web_dashboard/utils/navigator.dart';
 import 'package:flutter_web_dashboard/widgets/layout.dart';
 import 'package:flutter_web_dashboard/pages/404/error.dart';
@@ -54,9 +55,13 @@ class MyApp extends StatelessWidget {
           page: () => EditProfile(),
         ),
         GetPage(
-          name: viewEnquiryDetails,
-          page: () => Enquiry(),
+          name: successScreen,
+          page: () => SuccessScreen(),
         ),
+        // GetPage(
+        //   name: viewEnquiryDetails,
+        //   page: () => Enquiry(),
+        // ),
       ],
       scrollBehavior: MaterialScrollBehavior().copyWith(
         dragDevices: {

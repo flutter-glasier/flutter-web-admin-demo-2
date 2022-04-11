@@ -98,10 +98,10 @@ class EnquiryTable extends StatelessWidget {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        print('Pressed');
-                                        menuController.changeActiveItemTo(
-                                            viewEnquiryDetails);
-                                        Get.toNamed(viewEnquiryDetails);
+                                        // menuController.changeActiveItemTo(
+                                        //     viewEnquiryDetails);
+                                        navigationController
+                                            .navigateTo(viewEnquiryDetails);
                                       },
                                       child: Container(
                                           margin: EdgeInsets.symmetric(

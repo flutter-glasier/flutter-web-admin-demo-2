@@ -38,7 +38,7 @@ class MenuController extends GetxController {
       case editProfilePageDisplayName:
         return _customIcon(Icons.edit_outlined, itemName);
       case viewEnquiryDetails:
-        return _customIcon(Icons.edit_outlined, itemName);
+        return _customIcon(Icons.help_outline, enquiryPageDisplayName);
       case chatPageDisplayName:
         return _customIcon(Icons.chat, itemName);
       default:

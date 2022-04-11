@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/routing/routes.dart';
@@ -91,7 +92,27 @@ class AuthenticationPage extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAllNamed(rootRoute);
+                  var routeDetail = {
+                    "route": "/",
+                  };
+                  // Get.offAllNamed(rootRoute);
+                  Get.toNamed(successScreen, parameters: routeDetail);
+                  // Flushbar(
+                  //   forwardAnimationCurve: Curves.bounceIn,
+                  //   flushbarStyle: FlushbarStyle.FLOATING,
+                  //   positionOffset: 50,
+                  //   dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                  //   flushbarPosition: FlushbarPosition.TOP,
+                  //   message:
+                  //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                  //   icon: Icon(
+                  //     Icons.info_outline,
+                  //     size: 28.0,
+                  //     color: Colors.blue[300],
+                  //   ),
+                  //   duration: Duration(seconds: 3),
+                  //   leftBarIndicatorColor: Colors.blue[300],
+                  // )..show(context);
                 },
                 child: Container(
                   decoration: BoxDecoration(

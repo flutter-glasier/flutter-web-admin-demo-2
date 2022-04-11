@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,6 @@ class Clientstable extends StatelessWidget {
           horizontalMargin: 12,
           minWidth: 600,
           smRatio: 3 / 4,
-            
           columns: [
             DataColumn2(
               label: Text("Avatar"),
@@ -274,23 +274,23 @@ class Clientstable extends StatelessWidget {
                                 )),
                             IconButton(
                                 onPressed: () {
-                                  serviceController
-                                      .fakeUserResponse.value.results!
-                                      .where((element) =>
-                                          element.name!.first ==
-                                          serviceController
-                                              .fakeUserResponse
-                                              .value
-                                              .results![index]
-                                              .name!
-                                              .first!);
-                                  CustomWidgets().showNotification(
-                                      serviceController.fakeUserResponse.value
-                                              .results![index].name!.first! +
-                                          ' deleted',
-                                      context);
-                                  print(serviceController
-                                      .fakeUserResponse.value.results!.length);
+                                  // serviceController
+                                  //     .fakeUserResponse.value.results!
+                                  //     .where((element) =>
+                                  //         element.name!.first ==
+                                  //         serviceController
+                                  //             .fakeUserResponse
+                                  //             .value
+                                  //             .results![index]
+                                  //             .name!
+                                  //             .first!);
+                                  // CustomWidgets().showNotification(
+                                  //     serviceController.fakeUserResponse.value
+                                  //             .results![index].name!.first! +
+                                  //         ' deleted',
+                                  //     context);
+                                  // print(serviceController
+                                  //     .fakeUserResponse.value.results!.length);
                                 },
                                 icon: Icon(
                                   Icons.delete_outline,

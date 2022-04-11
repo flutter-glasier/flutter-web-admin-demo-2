@@ -17,7 +17,8 @@ const authenticationPageRoute = "/auth";
 const chatPageDisplayName = "Chat";
 const chatPageRoute = "/chat";
 
-const viewEnquiryDetails = "/drivers/:view-enquiry";
+const viewEnquiryDetails = "/enquiries/:view-enquiry";
+const successScreen = "/success-screen";
 
 class MenuItem {
   final String name;
@@ -30,7 +31,6 @@ List<MenuItem> sideMenuItemRoutes = [
   MenuItem(overviewPageDisplayName, overviewPageRoute),
   MenuItem(enquiryPageDisplayName, enquiryPageRoute),
   MenuItem(clientsPageDisplayName, clientsPageRoute),
-  MenuItem(editProfilePageDisplayName, editProfileRoute),
   MenuItem(chatPageDisplayName, chatPageRoute),
   MenuItem(authenticationPageDisplayName, authenticationPageRoute),
 ];
