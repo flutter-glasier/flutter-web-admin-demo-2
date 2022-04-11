@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/controllers/menu_controller.dart';
 import 'package:flutter_web_dashboard/controllers/navigation_controller.dart';
@@ -16,7 +17,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kiwi/kiwi.dart';
 
 import 'helpers/theme_helper.dart';
-import 'pages/view-enquiry/enquiry.dart';
 import 'routing/routes.dart';
 
 late KiwiContainer app;
@@ -71,6 +71,8 @@ class MyApp extends StatelessWidget {
           PointerDeviceKind.unknown
         },
       ),
+      navigatorObservers: [FlutterSmartDialog.observer],
+      builder: FlutterSmartDialog.init(),
       debugShowCheckedModeBanner: false,
       title: 'Dashboard',
       theme: ThemeData(

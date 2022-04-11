@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_web_dashboard/helpers/reponsiveness.dart';
 import 'package:flutter_web_dashboard/constants/controllers.dart';
 import 'package:flutter_web_dashboard/pages/overview/widgets/available_drivers_table.dart';
@@ -36,22 +37,33 @@ class OverviewPage extends StatelessWidget {
           ),
           // Expanded(child: EditProfile())
           Expanded(
-              child: ListView(
-            children: [
-              if (ResponsiveWidget.isLargeScreen(context) ||
-                  ResponsiveWidget.isMediumScreen(context))
-                if (ResponsiveWidget.isCustomSize(context))
-                  OverviewCardsMediumScreen()
-                else
-                  OverviewCardsLargeScreen()
-              else
-                OverviewCardsSmallScreen(),
-              if (!ResponsiveWidget.isSmallScreen(context))
-                RevenueSectionLarge()
-              else
-                RevenueSectionSmall(),
-              AvailableEnquiryTable(),
-            ],
+              child: AnimationLimiter(
+            child: ListView(
+              children: AnimationConfiguration.toStaggeredList(
+                duration: const Duration(milliseconds: 375),
+                childAnimationBuilder: (widget) => SlideAnimation(
+                  horizontalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: widget,
+                  ),
+                ),
+                children: [
+                  if (ResponsiveWidget.isLargeScreen(context) ||
+                      ResponsiveWidget.isMediumScreen(context))
+                    if (ResponsiveWidget.isCustomSize(context))
+                      OverviewCardsMediumScreen()
+                    else
+                      OverviewCardsLargeScreen()
+                  else
+                    OverviewCardsSmallScreen(),
+                  if (!ResponsiveWidget.isSmallScreen(context))
+                    RevenueSectionLarge()
+                  else
+                    RevenueSectionSmall(),
+                  AvailableEnquiryTable(),
+                ],
+              ),
+            ),
           ))
         ],
       ),

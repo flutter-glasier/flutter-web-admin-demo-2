@@ -54,7 +54,7 @@ class CustomTheme extends BaseTheme {
 }
 
 class BaseTheme {
-  Color get colorPrimary => fromHex("#294572");
+  Color get colorPrimary => fromHex("#3C19C0");
   Color get whiteColor => fromHex("#FFFFFF");
   Color get grey => fromHex("#696969");
 

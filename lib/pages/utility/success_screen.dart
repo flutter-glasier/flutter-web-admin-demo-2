@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
+import 'package:flutter_web_dashboard/routing/routes.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -35,8 +36,8 @@ class _SuccessScreenState extends State<SuccessScreen>
   void didChangeDependencies() {
     animateColor();
 
-    Future.delayed(Duration(seconds: 3))
-        .then((value) => Get.toNamed(Get.parameters['route']!));
+    Future.delayed(Duration(seconds: 2))
+        .then((value) => Get.offAllNamed(rootRoute));
     super.didChangeDependencies();
   }
 

@@ -1,19 +1,25 @@
+import 'dart:math';
+
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_web_dashboard/constants/style.dart';
 import 'package:flutter_web_dashboard/controllers/service_controller.dart';
 import 'package:flutter_web_dashboard/helpers/theme_helper.dart';
-import 'package:flutter_web_dashboard/utils/math_utils.dart';
 import 'package:flutter_web_dashboard/widgets/CustomShimmer.dart';
 import 'package:flutter_web_dashboard/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
-import '../../../models/DemoResponse.dart';
-
 /// Example without datasource
 class AvailableEnquiryTable extends StatelessWidget {
   ServiceController serviceController = Get.put(ServiceController());
+  final _random = Random();
+
+  Map<String, Color> colorlist = {
+    'REJECTED': Colors.red,
+    'NEW': Colors.blue,
+    'INPROGRESS': Colors.orange,
+    'COMPLETED': Colors.black
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +71,10 @@ class AvailableEnquiryTable extends StatelessWidget {
                       label: Text('Description'),
                       size: ColumnSize.L,
                     ),
+                    DataColumn2(
+                      label: Text('Status'),
+                      size: ColumnSize.S,
+                    ),
                     DataColumn(
                       label: Text('Action'),
                     ),
@@ -91,6 +101,19 @@ class AvailableEnquiryTable extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                                DataCell(Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: colorlist.values
+                                          .toList()[_random.nextInt(3)]
+                                          .withOpacity(0.2)),
+                                  child: Text(
+                                    colorlist.keys.toList()[_random.nextInt(3)],
+                                    style: appTheme!.text12SemiBoldBlack,
+                                  ),
+                                )),
                                 DataCell(Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -224,6 +247,12 @@ class AvailableEnquiryTable extends StatelessWidget {
               height: 15,
               width: 30,
             )),
+            DataCell(
+              CustomWidget.rectangular(
+                height: 10,
+                width: 100,
+              ),
+            ),
             DataCell(
               CustomWidget.rectangular(
                 height: 10,
