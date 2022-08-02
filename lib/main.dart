@@ -62,6 +62,10 @@ class MyApp extends StatelessWidget {
         //   name: viewEnquiryDetails,
         //   page: () => Enquiry(),
         // ),
+        // GetPage(
+        //   name: viewEnquiryDetails,
+        //   page: () => Enquiry(),
+        // ),
       ],
       scrollBehavior: MaterialScrollBehavior().copyWith(
         dragDevices: {
