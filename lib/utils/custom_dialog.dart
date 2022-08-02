@@ -1,0 +1,3 @@
+class CustomDialogs {
+  void hideProgressDialog() {}
+}
